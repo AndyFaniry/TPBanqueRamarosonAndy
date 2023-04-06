@@ -9,12 +9,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 
 /**
  *
  * @author ramar
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c"),})
 public class CompteBancaire implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -90,9 +94,10 @@ public class CompteBancaire implements Serializable {
     public String toString() {
         return "mg.itu.tpbanqueramarosonandy.entites.CompteBancaire[ id=" + id + " ]";
     }
-    
-    public CompteBancaire(){}
-    
+
+    public CompteBancaire() {
+    }
+
     public CompteBancaire(String nom, int solde) {
         this.nom = nom;
         this.solde = solde;
