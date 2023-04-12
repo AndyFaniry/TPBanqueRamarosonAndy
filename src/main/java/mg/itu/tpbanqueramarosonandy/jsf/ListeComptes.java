@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 import mg.itu.tpbanqueramarosonandy.ejb.GestionnaireCompte;
 import mg.itu.tpbanqueramarosonandy.entites.CompteBancaire;
+import mg.itu.tpbanqueramarosonandy.jsf.util.Util;
 
 /**
  *
@@ -19,6 +20,7 @@ import mg.itu.tpbanqueramarosonandy.entites.CompteBancaire;
 @Named(value = "listeComptes")
 @ViewScoped
 public class ListeComptes implements Serializable {
+
     @EJB
     private GestionnaireCompte gestionnaireCompte;
 
@@ -30,10 +32,16 @@ public class ListeComptes implements Serializable {
      * @return the value of allComptes
      */
     public List<CompteBancaire> getAllComptes() {
-        if(allComptes == null) {
+        if (allComptes == null) {
             allComptes = gestionnaireCompte.getAllComptes();
         }
         return allComptes;
+    }
+
+    public String supprimerCompte(CompteBancaire compteBancaire) {
+        gestionnaireCompte.supprimerCompte(compteBancaire);
+        Util.addFlashInfoMessage("Compte de " + compteBancaire.getNom() + " supprimé");
+        return "listeComptes?faces-redirect=true";
     }
 
     /**

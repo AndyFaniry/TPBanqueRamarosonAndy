@@ -49,15 +49,15 @@ public class GestionnaireCompte {
         Query query = em.createNamedQuery("CompteBancaire.count");
         return (Long) query.getSingleResult();
     }
-    
-     public CompteBancaire findById(Long idCompte) {
+
+    public CompteBancaire findById(Long idCompte) {
         return em.find(CompteBancaire.class, idCompte);
     }
 
     public CompteBancaire update(CompteBancaire compteBancaire) {
         return em.merge(compteBancaire);
     }
-    
+
     public void transferer(CompteBancaire source, CompteBancaire destination,
             int montant) {
         source.retirer(montant);
@@ -65,24 +65,30 @@ public class GestionnaireCompte {
         update(source);
         update(destination);
     }
-    
+
     /**
      * Dépôt d'argent sur un compte bancaire.
+     *
      * @param compteBancaire
-     * @param montant 
+     * @param montant
      */
     public void deposer(CompteBancaire compteBancaire, int montant) {
-      compteBancaire.deposer(montant);
-      update(compteBancaire);
+        compteBancaire.deposer(montant);
+        update(compteBancaire);
     }
-    
+
     /**
      * Retrait d'argent sur un compte bancaire.
+     *
      * @param compteBancaire
-     * @param montant 
+     * @param montant
      */
     public void retirer(CompteBancaire compteBancaire, int montant) {
-      compteBancaire.retirer(montant);
-      update(compteBancaire);
+        compteBancaire.retirer(montant);
+        update(compteBancaire);
+    }
+
+    public void supprimerCompte(CompteBancaire compte) {
+        em.remove(em.merge(compte));
     }
 }
