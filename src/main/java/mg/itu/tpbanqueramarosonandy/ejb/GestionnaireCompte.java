@@ -45,8 +45,8 @@ public class GestionnaireCompte {
         return query.getResultList();
     }
 
-    public int nbComptes() {
+    public Long nbComptes() {
         Query query = em.createNamedQuery("CompteBancaire.count");
-        return (int) query.getSingleResult();
+        return (Long) query.getSingleResult();
     }
 }
