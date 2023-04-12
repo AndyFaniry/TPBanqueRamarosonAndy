@@ -15,28 +15,30 @@
             <ui:define name="content">
                 <f:view>
                     <h:form>
-                        <h1><h:outputText value="Liste des clients"/></h1>
+                        <h1><h:outputText value="Liste des comptes"/></h1>
                         <p:dataTable value="#{listeComptes.allComptes}" var="item"
                                      paginator="true" rows="10"
                                      rowsPerPageTemplate="2,4,8,10"
                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-                            <p:column>
+                            <p:column  width="40">
                                 <f:facet name="header">
                                     <h:outputText value="id"/>
                                 </f:facet>
                                 <h:outputText value="#{item.id}"/>
                             </p:column>
-                            <p:column sortBy="#{item.nom}" filterBy="#{item.nom}">
+                            <p:column sortBy="#{item.nom}" filterBy="#{item.nom}" width="200">
                                 <f:facet name="header">
                                     <h:outputText value="Nom"/>
                                 </f:facet>
                                 <h:outputText value="#{item.nom}"/>
                             </p:column>
-                            <p:column sortBy="#{item.solde}" filterBy="#{item.solde}">
+                            <p:column sortBy="#{item.solde}" filterBy="#{item.solde}" style="text-align:right;" width="60">
                                 <f:facet name="header">
                                     <h:outputText value="Solde"/>
                                 </f:facet>
-                                <h:outputText value="#{item.solde}"/>
+                                <h:outputText value="#{item.solde}">
+                                    <f:convertNumber pattern="###,###,##0"/>
+                                </h:outputText>
                             </p:column>
                         </p:dataTable>
                     </h:form>
