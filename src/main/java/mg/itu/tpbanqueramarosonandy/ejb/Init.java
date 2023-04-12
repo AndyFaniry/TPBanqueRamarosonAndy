@@ -28,7 +28,7 @@ public class Init {
             gestionnaireCompte.creerCompte(compte1);
             CompteBancaire compte2 = new CompteBancaire("Paul McCartney", 950000);
             gestionnaireCompte.creerCompte(compte2);
-            CompteBancaire compte3 = new CompteBancaire("Ringo Starr,", 20000);
+            CompteBancaire compte3 = new CompteBancaire("Ringo Starr", 20000);
             gestionnaireCompte.creerCompte(compte3);
             CompteBancaire compte4 = new CompteBancaire("Georges Harrisson", 100000);
             gestionnaireCompte.creerCompte(compte4);
