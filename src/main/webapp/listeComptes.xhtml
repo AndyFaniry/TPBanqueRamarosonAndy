@@ -49,13 +49,16 @@
                                                title="Supprimer le compte de #{item.nom}" >
                                     <h:graphicImage name="images/del.png"/>
                                 </h:commandLink>
+                                <h:link outcome="edit?id=#{item.id}" 
+                                        value="Editer"/>
                             </p:column>
                             <p:column  width="20">
                                 <f:facet name="header">
-                                    Editer
+                                    <h:outputText escape="false" value="Historique&lt;br/>opérations"/>
                                 </f:facet>
-                                <h:link outcome="edit?id=#{item.id}" 
-                                        value="Editer"/>
+                                <h:link outcome="operations" value="Détails">
+                                    <f:param name="id" value="#{item.id}"></f:param>
+                                </h:link>
                             </p:column>
                         </p:dataTable>
                     </h:form>
