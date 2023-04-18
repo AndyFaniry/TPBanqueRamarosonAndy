@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Version;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,10 @@ public class CompteBancaire implements Serializable {
     public Long getId() {
         return id;
     }
-
+    
+    @Version
+    private int version;
+    
     private String nom;
 
     /**
